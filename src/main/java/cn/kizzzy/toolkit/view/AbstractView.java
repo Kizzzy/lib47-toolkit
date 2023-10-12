@@ -1,12 +1,16 @@
 package cn.kizzzy.toolkit.view;
 
 import cn.kizzzy.event.EventSource;
-import cn.kizzzy.helper.LogHelper;
 import cn.kizzzy.toolkit.controller.IController;
 import cn.kizzzy.toolkit.controller.IControllerHolder;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class AbstractView extends EventSource implements IController {
+    
+    protected static final Logger logger = LoggerFactory.getLogger(AbstractView.class);
+    
     protected Stage stage;
     protected IControllerHolder holder;
     
@@ -15,7 +19,7 @@ public abstract class AbstractView extends EventSource implements IController {
         if (holder != null) {
             holder.remove(this);
         }
-        LogHelper.info("Controller[" + getName() + "]已关闭");
+        logger.info("Controller[" + getName() + "]已关闭");
     }
     
     @Override

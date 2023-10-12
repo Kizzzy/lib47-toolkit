@@ -1,6 +1,5 @@
 package cn.kizzzy.toolkit.controller;
 
-import cn.kizzzy.helper.LogHelper;
 import cn.kizzzy.helper.StringHelper;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,10 +8,14 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
 
 public class Controllers {
+    
+    private static final Logger logger = LoggerFactory.getLogger(Controllers.class);
     
     public static <T extends IController> T start(IControllerHolder holder, Stage stage, Class<T> clazz) {
         try {
@@ -24,11 +27,11 @@ public class Controllers {
             T controller = clazz.newInstance();
             controller.setStage(stage);
             controller.setHolder(holder);
-    
+            
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Controllers.class.getResource(parameter.url()));
             loader.setControllerFactory(c -> controller);
-    
+            
             Parent root = loader.load();
             
             Scene scene = new Scene(root);
@@ -61,7 +64,7 @@ public class Controllers {
             
             return controller;
         } catch (Exception e) {
-            LogHelper.error("load controller failed!!!", e);
+            logger.error("load controller failed!!!", e);
             return null;
         }
     }
