@@ -3,31 +3,40 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    
     <groupId>cn.kizzzy</groupId>
     <artifactId>lib47-toolkit</artifactId>
     <version>${lib47-version}</version>
-
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
+        
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-
+        
         <lib47-version>1.0-SNAPSHOT</lib47-version>
         <maven-compiler-plugin-version>3.5.1</maven-compiler-plugin-version>
+        
+        <junit.version>4.13.2</junit.version>
     </properties>
-
+    
     <dependencies>
-
+        
         <dependency>
             <groupId>cn.kizzzy</groupId>
             <artifactId>lib47-helper</artifactId>
             <version>${lib47-version}</version>
         </dependency>
-
+        
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    
     </dependencies>
-
+    
     <build>
         <plugins>
             <plugin>
